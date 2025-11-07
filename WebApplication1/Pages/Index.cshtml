@@ -1,0 +1,146 @@
+﻿@page
+@model WebApplication1.Pages.IndexModel
+@{
+    ViewData["Title"] = "Registro de Nuevo Usuario";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #1a0033, #4b0082, #000000);
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .registro-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        width: 420px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .registro-container:hover {
+            transform: scale(1.02);
+        }
+
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+        color: #ffccff;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+        text-align: left;
+    }
+
+    label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.85);
+        font-size: 1em;
+    }
+
+        input:focus {
+            background: #fff;
+            box-shadow: 0 0 10px #ff00ff;
+        }
+
+    button {
+        width: 100%;
+        background: linear-gradient(90deg, #9b00ff, #ff00aa);
+        color: white;
+        font-size: 1.1em;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        padding: 12px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        button:hover {
+            background: linear-gradient(90deg, #b84dff, #ff33cc);
+        }
+
+    .mensaje {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #ccffcc;
+        font-size: 1.1em;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 15px;
+        text-align: center;
+        width: 100%;
+        color: #ddd;
+        font-size: 0.9em;
+    }
+</style>
+
+<div class="registro-container">
+    <h2>Registro de Nuevo Usuario</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input asp-for="Cliente.Nombre" placeholder="Ingresa tu nombre" />
+        </div>
+
+        <div class="form-group">
+            <label>Apellido:</label>
+            <input asp-for="Cliente.Apellido" placeholder="Ingresa tu apellido" />
+        </div>
+
+        <div class="form-group">
+            <label>Correo Electrónico:</label>
+            <input asp-for="Cliente.Correo" placeholder="ejemplo@correo.com" />
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono:</label>
+            <input asp-for="Cliente.Telefono" placeholder="Ingresa tu número de teléfono" />
+        </div>
+
+        <div class="form-group">
+            <label>Dirección:</label>
+            <input asp-for="Cliente.Direccion" placeholder="Ingresa tu dirección" />
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña:</label>
+            <input asp-for="Cliente.Contrasena" type="password" placeholder="Crea una contraseña" />
+        </div>
+
+        <button type="submit">Registrarse</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.Mensaje))
+    {
+        <p class="mensaje">@Model.Mensaje</p>
+    }
+</div>
+
+<footer>
+    © @DateTime.Now.Year - WebApplication1
+</footer>
